@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    sessions: "authentication/sessions",
+    confirmations: "authentication/confirmations",
+    passwords: "authentication/passwords",
+    registrations: "authentication/registrations",
+    unlocks: "authentication/unlocks"
+  }
+
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

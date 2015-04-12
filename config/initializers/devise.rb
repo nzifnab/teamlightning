@@ -4,13 +4,14 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = '098a0514aa981c6ad73cba858be88cd3cf69d560b5ae78c2de9e234bc9e83f1951ab8591df56f378840a5654ba0cab6da91fc4fe7b755d9bfbaea3eaa4a2ef25'
+  config.secret_key = ENV['DEVISE_SECRET_KEY'] || 'ec9e0e17dbb6c4d7408ed6d44e92109887669e5b22bfb7a424ad3406bd008aec1786a493cfa73e1daa43067ea48ec933fedccbf9d8af79188c71d3033cc83386'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  # TODO: Set this to the correct email 'from' address.
+  config.mailer_sender = 'noreply@teamlightning.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -94,10 +95,10 @@ Devise.setup do |config|
   # a value less than 10 in other environments. Note that, for bcrypt (the default
   # encryptor), the cost increases exponentially with the number of stretches (e.g.
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
-  config.stretches = Rails.env.test? ? 1 : 10
+  config.stretches = Rails.env.test? ? 1 : 12
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '07a495726e7f62a20faf2db82567a647a4e82dad8b4cf1cccf13a83cf81f3339e0d8c498ffd6e4db60d885a07efa914fe0d8ba76b59abc9d167307e98d12816a'
+  config.pepper = ENV['DEVISE_PEPPER'] || '8fc03b5e85304b32f3e051e4c0e39cc2f05dea222d92d528db2eba5bd27077a7136e6def67e34b218beaf6cf9830b6ec81e04df85cc166f96f83f4a2db6c46cf'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -126,7 +127,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  # config.remember_for = 2.weeks
+  config.remember_for = 2.weeks
 
   # Invalidates all the remember me tokens when the user signs out.
   config.expire_all_remember_me_on_sign_out = true
@@ -184,7 +185,7 @@ Devise.setup do |config|
   # ==> Configuration for :recoverable
   #
   # Defines which key will be used when recovering the password for an account
-  # config.reset_password_keys = [ :email ]
+  config.reset_password_keys = [ :email ]
 
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
