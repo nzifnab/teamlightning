@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
          :confirmable
 
   validates :display_name, presence: true, uniqueness: true
+
+  def forem_name
+    display_name
+  end
 end

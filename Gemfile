@@ -26,6 +26,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Application Gems
 gem 'devise'
 gem 'haml'
+gem 'forem', github: 'nzifnab/forem', branch: 'rails4'
+gem 'will_paginate'
+# Github-flavored markdown
+gem 'forem-gfm_formatter'
+gem 'forem-bootstrap', github: 'radar/forem-bootstrap'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
