@@ -6,5 +6,6 @@
     = javascript_include_tag 'application', data: {turbolinks_track: true}
     = csrf_meta_tags
   %body
+    = link_to 'Logout', main_app.destroy_user_session_path, method: :delete
     = render 'shared/flash_messages'
     = yield
