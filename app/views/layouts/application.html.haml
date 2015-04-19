@@ -5,7 +5,31 @@
     = stylesheet_link_tag 'application', media: 'all', data: {turbolinks_track: true}
     = javascript_include_tag 'application', data: {turbolinks_track: true}
     = csrf_meta_tags
+
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
   %body
-    = link_to 'Logout', main_app.destroy_user_session_path, method: :delete
-    = render 'shared/flash_messages'
-    = yield
+    %header.container-fluid
+      .row
+        .col-md-10
+          Logo image goes here - TEAM LIGHTNING
+        - if user_signed_in?
+          .user.col-md-2
+            .username
+              = link_to_if Forem.user_profile_links, current_user.forem_name, current_user
+            .icon= forem_avatar(current_user, :size => 60)
+            = link_to 'Logout', main_app.destroy_user_session_path, method: :delete
+
+    %nav.navbar.navbar-default
+      .container-fluid
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li{class: current_location?('home#index') ? 'active' : ''}= link_to "Home", main_app.root_path
+            %li{class: current_location?(%r{^/forums}) ? 'active' : ''}= link_to "Forums", forem.forums_path
+
+
+    .container-fluid
+      .row
+        .col-md-12
+          = render 'shared/flash_messages'
+    
+      = yield
