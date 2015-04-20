@@ -1,4 +1,13 @@
-.nav li:hover{
-  color: #555;
+.navbar-default .nav li:hover{
   background-color: #e7e7e7;
+  a{
+    color: #555;
+  }
+}
+
+.navbar-inverse .nav li:hover{
+  background-color: #090909;
+  a{
+    color: #fff;
+  }
 }
